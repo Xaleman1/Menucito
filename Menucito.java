@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package menucito;
 
 import javax.swing.*;
@@ -48,7 +44,7 @@ public class Menucito {
                 Object nombre = tabla.getValueAt(fila, columna);
 
                 if (nombre != null) {
-                    eliminarNombreDeTabla(modeloTabla, fila, columna); 
+                  deleteNombreDeTabla(modeloTabla, fila, columna); 
                     JOptionPane.showMessageDialog(null, "Nombre eliminado: " + nombre);
                 }
             }
@@ -60,7 +56,7 @@ public class Menucito {
                 String nombre = campoNombre.getText().trim();
                 if (!nombre.isEmpty()) {
                     if (contarElementos(modeloTabla) < MAX_ELEMENTOS) {
-                        agregarNombreATabla(nombre, modeloTabla); 
+                        addNombreATabla(nombre, modeloTabla); 
                     } else {
                         JOptionPane.showMessageDialog(null, "Solo se admiten " + MAX_ELEMENTOS + " elementos.");
                     }
@@ -91,7 +87,7 @@ public class Menucito {
     }
 
    
-    private static void agregarNombreATabla(String nombre, DefaultTableModel modelo) {
+    private static void addNombreATabla(String nombre, DefaultTableModel modelo) {
         for (int columna = MAX_COLUMNAS - 1; columna >= 0; columna--) {
             for (int fila = MAX_FILAS - 1; fila >= 0; fila--) {
                 if (columna == 0 && fila == 0) {
@@ -106,7 +102,7 @@ public class Menucito {
     }
 
     //
-    private static void eliminarNombreDeTabla(DefaultTableModel modelo, int fila, int columna) {
+    private static void deleteNombreDeTabla(DefaultTableModel modelo, int fila, int columna) {
         for (int f = fila; f < MAX_FILAS - 1; f++) {
             modelo.setValueAt(modelo.getValueAt(f + 1, columna), f, columna);
         }
